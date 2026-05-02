@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800;900&family=Luckiest+Guy&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-brand: "Luckiest Guy", cursive;
+
+  --color-accent: #E31837;
+  --color-accent-hover: #C51430;
+  --color-bg-base: #F6F1EB;
+  --color-ink: #1A1714;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: var(--color-bg-base);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+  }
+
+  a,
+  button,
+  input,
+  textarea,
+  select {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  img {
+    display: block;
+  }
+}
+
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Canvas performance optimization for frame animation */
+  canvas {
+    display: block;
+    image-rendering: auto;
+    will-change: contents;
+  }
+
+  /* Smooth scrolling performance */
+  @supports (scroll-behavior: smooth) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  /* Optimize hardware acceleration for animations */
+  .motion-safe\:will-change {
+    @media (prefers-reduced-motion: no-preference) {
+      will-change: transform;
+    }
+  }
+}
